@@ -4,17 +4,12 @@ import { Component } from '@angular/core';
 import { bootstrap } from 'angular2-meteor-auto-bootstrap';
 import { Parties }   from '../collections/parties';
 import { Mongo }     from 'meteor/mongo';
-import { DataTable } from 'primeng/primeng';
-import { Column } from 'primeng/primeng';
 import { MeteorComponent } from 'angular2-meteor';
-import { Button } from 'primeng/primeng';
-import { Dialog } from 'primeng/primeng';
-import { InputText } from 'primeng/primeng';
-
+import { DataTable, Column, Button, Dialog, InputText, Fieldset } from 'primeng/primeng';
 
 @Component({
   selector: 'app',
-  directives: [DataTable,Column,Button,Dialog,InputText],
+  directives: [DataTable, Column, Button, Dialog, InputText, Fieldset],
   templateUrl: 'client/app.html'
 })
 class App extends MeteorComponent { 
@@ -48,17 +43,20 @@ class App extends MeteorComponent {
       } else {
         Parties.insert(this.currentParty);
       }
-      this.currentParty = null;
-      this.displayDialog = false;
+      this.cancel();
   }
   
   delete() {
       if (this.currentParty["_id"]) {
         Parties.remove(this.currentParty["_id"]);
       }
+      this.cancel();
+  }
+  
+  cancel() {
       this.currentParty = null;
       this.displayDialog = false;
-  }    
+  }
   
   cloneObject(o: Object): Object {
         let obj = new Object();
