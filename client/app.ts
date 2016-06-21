@@ -30,21 +30,43 @@ class App extends MeteorComponent {
     }, true);
   }
 
+  showDialogToAdd() {
+      this.currentParty = new Object();
+      this.displayDialog = true;
+  }
+    
   onRowSelect(event) {
-      this.currentParty = event.data;
+      console.log("row select");
+      this.currentParty = this.cloneObject(event.data);
       this.displayDialog = true;
   }
 
   save() {
+      console.log("save: " + JSON.stringify(this.currentParty));
+      if (this.currentParty["_id"]) {
+        Parties.update(this.currentParty["_id"], this.currentParty);
+      } else {
+        Parties.insert(this.currentParty);
+      }
       this.currentParty = null;
       this.displayDialog = false;
   }
   
   delete() {
+      if (this.currentParty["_id"]) {
+        Parties.remove(this.currentParty["_id"]);
+      }
       this.currentParty = null;
       this.displayDialog = false;
   }    
   
+  cloneObject(o: Object): Object {
+        let obj = new Object();
+        for(let prop in o) {
+            obj[prop] = o[prop];
+        }
+        return obj;
+    }
 }
  
 bootstrap(App);
