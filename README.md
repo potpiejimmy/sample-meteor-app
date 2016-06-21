@@ -18,6 +18,7 @@ And for now, also do this:
 
     mkdir public
     cp -a node_modules/primeui public
+    cp -a node_modules/font-awesome public
 
 To start, simply call
 
