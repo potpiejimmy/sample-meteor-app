@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import 'zone.js/dist/zone';
 import { Component } from '@angular/core';
-import { bootstrap } from 'angular2-meteor-auto-bootstrap';
+import { bootstrap } from '@angular/platform-browser-dynamic';
 import { Parties }   from '../collections/parties';
 import { Mongo }     from 'meteor/mongo';
 import { MeteorComponent } from 'angular2-meteor';
