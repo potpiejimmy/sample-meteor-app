@@ -10,7 +10,7 @@ import { DataTable, Column, Button, Dialog, InputText, Fieldset } from 'primeng/
 @Component({
   selector: 'app',
   directives: [DataTable, Column, Button, Dialog, InputText, Fieldset],
-  templateUrl: 'client/app.html'
+  templateUrl: 'meteor/client/app.html'
 })
 class App extends MeteorComponent { 
   parties: Array<Object>;
