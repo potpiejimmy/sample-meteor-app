@@ -20,6 +20,10 @@ And for now, also do this:
     cp -a node_modules/primeui public
     cp -a node_modules/font-awesome public
 
+Set the root URL before running:
+
+    export ROOT_URL=http://localhost:3000/meteor 
+
 To start, simply call
 
     meteor
